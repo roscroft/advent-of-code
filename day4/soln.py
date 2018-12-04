@@ -1,6 +1,15 @@
 import re
 from datetime import datetime
 
+def max_idx(lst):
+    max_idx = 0
+    max_item = 0
+    for idx, item in enumerate(lst):
+        if item > max_item:
+            max_item = item
+            max_idx = idx
+    return max_idx
+
 def main():
     with open('input.txt', 'r+') as datafile:
         data = datafile.readlines()
@@ -36,28 +45,13 @@ def main():
 
     most_asleep = {k: sum(v) for k, v in sleep_dict.items()}
     most_asleep_guard = max(list(most_asleep.keys()), key=(lambda key: most_asleep[key]))
-
-    max_idx = 0
-    max_item = 0
-    for idx, item in enumerate(sleep_dict[most_asleep_guard]):
-        if item > max_item:
-            max_idx = idx
-            max_item = item
-
-    # Part 1
-    print(int(most_asleep_guard)*max_idx)
+    most_asleep_idx = max_idx(sleep_dict[most_asleep_guard])
+    print(int(most_asleep_guard)*most_asleep_idx)
 
     most_freq_asleep = {k: max(v) for k, v in sleep_dict.items()}
     most_freq_guard = max(list(most_asleep.keys()), key=(lambda key: most_freq_asleep[key]))
-
-    max_idx = 0
-    max_item = 0
-    for idx, item in enumerate(sleep_dict[most_freq_guard]):
-        if item > max_item:
-            max_idx = idx
-            max_item = item
-
-    print(int(most_freq_guard)*max_idx)
+    most_freq_idx = max_idx(sleep_dict[most_freq_guard])
+    print(int(most_freq_guard)*most_freq_idx)
 
 if __name__ == "__main__":
     main()
