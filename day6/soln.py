@@ -7,7 +7,7 @@ def main():
 
     def argmin(distances):
         min_idx = 0
-        min_dist = 100000000
+        min_dist = 100000000000
         for idx, dist in distances:
             if dist < min_dist:
                 min_dist = dist
@@ -74,6 +74,7 @@ def main():
             if area > max_area and not is_inf:
                 max_area = area
 
+        print(len(explored))
         print(max_area)
 
     part1(data)
