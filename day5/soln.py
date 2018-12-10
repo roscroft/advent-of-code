@@ -1,14 +1,3 @@
-import re
-
-def max_idx(lst):
-    max_idx = 0
-    max_item = 0
-    for idx, item in enumerate(lst):
-        if item > max_item:
-            max_item = item
-            max_idx = idx
-    return max_idx
-
 def main():
     with open('input.txt', 'r+') as datafile:
         data = datafile.readlines()
